@@ -19,6 +19,14 @@ export interface IteracionFalsaPosicion {
   error: number;
 }
 
+export interface IteracionPuntoFijo {
+   iteracion: number;
+   p: number;      
+   'g(p)': number;    
+   error: number; 
+}
+
+
 export interface IteracionNewton {
   iteracion: number;
   x: number;
@@ -43,6 +51,8 @@ export interface Resultado {
   errorFinal: number;
   advertencia?: string;
 }
+
+
 
 // Interface para métodos que usan derivadas
 export interface ResultadoConDerivada extends Resultado {

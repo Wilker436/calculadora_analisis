@@ -1,9 +1,9 @@
 // components/Result/Result.tsx
-import type { Resultado, IteracionBiseccion, IteracionNewton, IteracionSecante } from '../../types/numericalMethods';
+import type { Resultado, IteracionBiseccion, IteracionNewton, IteracionSecante, IteracionPuntoFijo, IteracionFalsaPosicion } from '../../types/numericalMethods';
 
 interface ResultadosProps {
   resultado: Resultado | null;
-  iteraciones: IteracionBiseccion[] | IteracionNewton[] | IteracionSecante[];
+  iteraciones: IteracionBiseccion[] | IteracionNewton[] | IteracionSecante[] | IteracionPuntoFijo[] | IteracionFalsaPosicion[];
 }
 
 export const Resultados: React.FC<ResultadosProps> = ({ resultado, iteraciones }) => {
