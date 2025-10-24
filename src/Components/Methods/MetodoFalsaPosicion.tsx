@@ -3,6 +3,7 @@ import { useEcuacion } from '../../hooks/UseEcuacion';
 import { InputEcuacion } from '../InputEcuacion/InputEcuacion';
 import { InputNumerico } from '../InputNumerico/InputNumerico';
 import { Resultados } from '../Result/Result';
+
 import type { IteracionFalsaPosicion, Resultado } from '../../types/numericalMethods';
 
 
