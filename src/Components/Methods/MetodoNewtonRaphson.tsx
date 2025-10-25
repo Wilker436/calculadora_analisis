@@ -113,7 +113,7 @@ export default function MetodoNewtonRaphson() {
           onProbarEcuacion={handleProbarEcuacion}
         />
 
-        <div className="grid grid-cols-2 gap-4">
+  {/*       <div className="grid grid-cols-2 gap-4">
           <InputNumerico
             label="Valor inicial de X"
             value={x0}
@@ -121,7 +121,7 @@ export default function MetodoNewtonRaphson() {
             step="any"
           />
 
-        </div>
+        </div> */}
 
         <div className="grid grid-cols-2 gap-4">
           <InputNumerico
