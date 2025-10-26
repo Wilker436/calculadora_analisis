@@ -1,12 +1,12 @@
-// components/Result/Result.tsx
-import type { Resultado, IteracionBiseccion, IteracionNewton, IteracionSecante, IteracionPuntoFijo} from '../../types/numericalMethods';
+// components/Result/ResultSistema.tsx
+import type { ResultadoSistema, IteracionJacobi } from '../../types/numericalMethods';
 
-interface ResultadosProps {
-  resultado: Resultado | null;
-  iteraciones: IteracionBiseccion[] | IteracionNewton[] | IteracionSecante[] | IteracionPuntoFijo[] ;
+interface ResultadosSistemaProps {
+  resultado: ResultadoSistema | null;
+  iteraciones: IteracionJacobi[];
 }
 
-export const Resultados: React.FC<ResultadosProps> = ({ resultado, iteraciones }) => {
+export const ResultadosSistema: React.FC<ResultadosSistemaProps> = ({ resultado, iteraciones }) => {
   if (!resultado) return null;
 
   // Función para formatear valores según la columna
@@ -26,17 +26,15 @@ export const Resultados: React.FC<ResultadosProps> = ({ resultado, iteraciones }
       <div className="p-4 bg-[#DCD6F7] border border-[#b8b2d6] rounded-lg">
         <h4 className="text-lg font-semibold text-[#424874] mb-2">Resultados</h4>
         <div className="grid grid-cols-2 gap-4">
-          <div>
-            <strong>Raíz aproximada:</strong> {resultado.raiz.toFixed(6)}
+          <div className="col-span-2">
+            <strong>Solución:</strong> {resultado.raiz}
           </div>
           <div>
-            <strong>Iteraciones:</strong> {resultado.iteraciones} {/* Ya es entero */}
+            <strong>Iteraciones:</strong> {resultado.iteraciones}
           </div>
-          {resultado.errorFinal && (
-            <div>
-              <strong>Error final:</strong> {resultado.errorFinal.toFixed(6)}
-            </div>
-          )}
+          <div>
+            <strong>Error final:</strong> {resultado.error.toFixed(6)}
+          </div>
           {resultado.advertencia && (
             <div className="col-span-2 text-yellow-700">
               <strong>Advertencia:</strong> {resultado.advertencia}

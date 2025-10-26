@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { useEcuacion } from '../../hooks/UseEcuacion';
-import { InputEcuacion } from '../InputEcuacion/InputEcuacion';
-import { InputNumerico } from '../InputNumerico/InputNumerico';
-import { Resultados } from '../Result/Result';
-import type { IteracionNewton, ResultadoConDerivada } from '../../types/numericalMethods';
-import { derivadaNumerica } from '../../utils/derivadas';
+import { useEcuacion } from '../../../hooks/UseEcuacion';
+import { InputEcuacion } from '../../InputEcuacion/InputEcuacion';
+import { InputNumerico } from '../../InputNumerico/InputNumerico';
+import { Resultados } from '../../Result/Result';
+import type { IteracionNewton, ResultadoConDerivada } from '../../../types/numericalMethods';
+import { derivadaNumerica } from '../../../utils/derivadas';
 
 export default function MetodoNewtonRaphson() {
   const { ecuacion, setEcuacion, evaluar, probarEcuacion, errorEcuacion } = useEcuacion();

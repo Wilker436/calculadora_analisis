@@ -1,8 +1,8 @@
 
 import { useState } from 'react';
-import { useGaussJordan } from '../../hooks/UseGaussJordan';
-import MatrizInput from '../MatrizInput/MatrizInput';
-import type { PasoGaussJordan } from '../../types/numericalMethods';
+import { useGaussJordan } from '../../../hooks/UseGaussJordan';
+import MatrizInput from '../../MatrizInput/MatrizInput';
+import type { PasoGaussJordan } from '../../../types/numericalMethods';
 
 export default function MetodoGaussJordan() {
   const [filas, setFilas] = useState<number>(2);

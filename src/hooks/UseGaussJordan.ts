@@ -1,12 +1,7 @@
 
 import { useState } from 'react';
+import type { PasoGaussJordan } from '../types/numericalMethods';
 
-export interface PasoGaussJordan {
-  paso: number;
-  descripcion: string;
-  matriz: number[][];
-  operacion?: string;
-}
 
 export function useGaussJordan() {
   const [pasos, setPasos] = useState<PasoGaussJordan[]>([]);

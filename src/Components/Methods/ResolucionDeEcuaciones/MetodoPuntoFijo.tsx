@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { useEcuacion } from '../../hooks/UseEcuacion';
-import { InputEcuacion } from '../InputEcuacion/InputEcuacion';
-import { InputNumerico } from '../InputNumerico/InputNumerico';
-import { Resultados } from '../Result/Result';
-import type { IteracionPuntoFijo, Resultado } from '../../types/numericalMethods';
+import { useEcuacion } from '../../../hooks/UseEcuacion';
+import { InputEcuacion } from '../../InputEcuacion/InputEcuacion';
+import { InputNumerico } from '../../InputNumerico/InputNumerico';
+import { Resultados } from '../../Result/Result';
+import type { IteracionPuntoFijo, Resultado } from '../../../types/numericalMethods';
 
 
 
@@ -14,7 +14,6 @@ export default function MetodoPuntoFijo() {
 
   // Estados específicos del método
   const [a, setA] = useState<string>("1");
-  const [b, setB] = useState<string>("3");
   const [tolerancia, setTolerancia] = useState<string>("0.0001");
   const [maxIteraciones, setMaxIteraciones] = useState<string>("100");
   const [resultado, setResultado] = useState<Resultado | null>(null);

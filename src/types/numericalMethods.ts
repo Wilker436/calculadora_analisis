@@ -64,6 +64,31 @@ export interface UseEcuacionReturn {
 }
 
 
+export interface UseEcuacionSistemaReturn {
+  ecuacion: string;
+  setEcuacion: (ecuacion: string) => void;
+  evaluar: (variables: Record<string, number>) => number;
+  probarEcuacion: () => { exitoso: boolean; test1?: number; test2?: number; error?: string };
+  errorEcuacion: string;
+  setErrorEcuacion: (error: string) => void;
+}
+
+export interface IteracionJacobi {
+  iteracion: number;
+  x: number;
+  y: number;
+  z: number;
+  error: number;
+}
+
+// types/numericalMethods.ts - Agrega esto
+
+export interface ResultadoSistema {
+  raiz: string; // Cambiado a string para mostrar x, y, z
+  iteraciones: number;
+  error: number;
+  advertencia?: string;
+}
 
 export interface MatrizInputProps {
   filas: number;

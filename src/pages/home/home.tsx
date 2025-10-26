@@ -4,29 +4,89 @@ import { useState, Suspense, lazy } from "react";
 /* bibliotecas externas*/
 import { IoIosArrowDown } from "react-icons/io";
 import { FaInfoCircle } from "react-icons/fa";
-import { Dropdown, DropdownItem, Modal, ModalBody, ModalFooter, ModalHeader } from "flowbite-react";
+import { Dropdown, DropdownItem, Modal, ModalBody, ModalFooter, ModalHeader, DropdownDivider } from "flowbite-react";
 
 
 /* Componentes */
-const MetodoBiseccion = lazy(() => import("../../Components/Methods/MetodoBiseccion"));
-const MetodoFalsaPosicion = lazy(() => import("../../Components/Methods/MetodoFalsaPosicion"));
-const MetodoPuntoFijo = lazy(() => import("../../Components/Methods/MetodoPuntoFijo"));
-const MetodoNewtonRaphson = lazy(() => import("../../Components/Methods/MetodoNewtonRaphson"));
-const MetodoGaussJordan = lazy(() => import("../../Components/Methods/MetodoGaussJordan"));
-const MetodoGaussSeidel = lazy(() => import("../../Components/Methods/MetodoGaussSeidel"));
-const MetodoJacobi = lazy(() => import("../../Components/Methods/MetodoJacobi"));
+const MetodoBiseccion = lazy(() => import("../../Components/Methods//ResolucionDeEcuaciones/MetodoBiseccion"));
+const MetodoFalsaPosicion = lazy(() => import("../../Components/Methods/ResolucionDeEcuaciones/MetodoFalsaPosicion"));
+const MetodoPuntoFijo = lazy(() => import("../../Components/Methods/ResolucionDeEcuaciones/MetodoPuntoFijo"));
+const MetodoNewtonRaphson = lazy(() => import("../../Components/Methods/ResolucionDeEcuaciones/MetodoNewtonRaphson"));
+const MetodoGaussJordan = lazy(() => import("../../Components/Methods/ResolucionDeSistemasEcuaciones/MetodoGaussJordan"));
+const MetodoGaussSeidel = lazy(() => import("../../Components/Methods/ResolucionDeSistemasEcuaciones/MetodoGaussSeidel"));
+const MetodoJacobi = lazy(() => import("../../Components/Methods/ResolucionDeSistemasEcuaciones/MetodoJacobi"));
+const InterpolacionLineal = lazy(() => import("../../Components/Methods/Interpolacion/InterpolacionLineal"));
+const InterpolacionLagrange = lazy(() => import("../../Components/Methods/Interpolacion/InterpolacionLagrange"));
+
 
 import LoadingFallback from "../../Components/LoadingFallback/LoadingFallback";
 
 
+
 const metodosConfig = [
-  { id: "biseccion", label: "Método de Bisección", componente: MetodoBiseccion },
-  { id: "falsa-posicion", label: "Método de Falsa Posición", componente: MetodoFalsaPosicion },
-  { id: "punto-fijo", label: "Método de Punto Fijo", componente: MetodoPuntoFijo },
-  { id: "newton-raphson", label: "Método de Newton-Raphson", componente: MetodoNewtonRaphson },
-  { id: "gauss-jordan", label: "Método de Gauss-Jordan", componente: MetodoGaussJordan },
-  { id: "gauss-seidel", label: "Método de Gauss-Seidel", componente: MetodoGaussSeidel },
-  { id: "jacobi", label: "Método de Jacobi", componente: MetodoJacobi },
+  // Métodos de resolución de ecuaciones
+  {
+    id: "biseccion",
+    label: "Método de Bisección",
+    componente: MetodoBiseccion,
+    tipo: "ecuaciones"
+  },
+  {
+    id: "falsa-posicion",
+    label: "Método de Falsa Posición",
+    componente: MetodoFalsaPosicion,
+    tipo: "ecuaciones"
+  },
+  {
+    id: "punto-fijo",
+    label: "Método de Punto Fijo",
+    componente: MetodoPuntoFijo,
+    tipo: "ecuaciones"
+  },
+  {
+    id: "newton-raphson",
+    label: "Método de Newton-Raphson",
+    componente: MetodoNewtonRaphson,
+    tipo: "ecuaciones"
+  },
+
+  // Separador - Métodos de sistemas de ecuaciones
+  { id: "divider-sistemas", tipo: "divider", label: "Sistemas de Ecuaciones" },
+
+  {
+    id: "gauss-jordan",
+    label: "Método de Gauss-Jordan",
+    componente: MetodoGaussJordan,
+    tipo: "sistemas"
+  },
+  {
+    id: "gauss-seidel",
+    label: "Método de Gauss-Seidel",
+    componente: MetodoGaussSeidel,
+    tipo: "sistemas"
+  },
+  {
+    id: "jacobi",
+    label: "Método de Jacobi",
+    componente: MetodoJacobi,
+    tipo: "sistemas"
+  },
+
+  // Separador - Interpolación
+  { id: "divider-interpolacion", tipo: "divider", label: "Interpolación" },
+
+  {
+    id: "interpolacion-lineal",
+    label: "Interpolación Lineal",
+    componente: InterpolacionLineal, // Necesitarías crear este componente
+    tipo: "interpolacion"
+  },
+  {
+    id: "lagrange",
+    label: "Interpolación por Lagrange",
+    componente: InterpolacionLagrange, // Necesitarías crear este componente
+    tipo: "interpolacion"
+  },
 ];
 
 type MetodoConfig = typeof metodosConfig[0];
@@ -73,14 +133,60 @@ export default function Home() {
               </div>
             )}
           >
-            {metodosConfig.map((metodo) => (
-              <DropdownItem
-                key={metodo.id}
-                onClick={() => setMetodoActivo(metodo)}
-              >
-                {metodo.label}
-              </DropdownItem>
-            ))}
+            {/* Métodos de resolución de ecuaciones */}
+            <DropdownItem className="cursor-default text-[15px] font-bold bg-[#364153]">
+              Métodos de Resolución de Ecuaciones
+            </DropdownItem>
+
+            {metodosConfig
+              .filter(metodo => metodo.tipo === "ecuaciones")
+              .map((metodo) => (
+                <DropdownItem
+                  key={metodo.id}
+                  onClick={() => setMetodoActivo(metodo)}
+                >
+                  {metodo.label}
+                </DropdownItem>
+              ))
+            }
+
+            <DropdownDivider />
+
+            {/* Métodos de sistemas de ecuaciones */}
+            <DropdownItem className="cursor-default text-[15px] font-bold bg-[#364153]">
+              Métodos de Sistemas de Ecuaciones
+            </DropdownItem>
+
+            {metodosConfig
+              .filter(metodo => metodo.tipo === "sistemas")
+              .map((metodo) => (
+                <DropdownItem
+                  key={metodo.id}
+                  onClick={() => setMetodoActivo(metodo)}
+                >
+                  {metodo.label}
+                </DropdownItem>
+              ))
+            }
+
+            <DropdownDivider />
+
+            {/* Interpolación */}
+            <DropdownItem className="cursor-default text-[15px] font-bold bg-[#364153]">
+              Interpolación
+            </DropdownItem>
+
+            {metodosConfig
+              .filter(metodo => metodo.tipo === "interpolacion")
+              .map((metodo) => (
+                <DropdownItem
+                  key={metodo.id}
+                  onClick={() => setMetodoActivo(metodo)}
+                >
+                  {metodo.label}
+                </DropdownItem>
+              ))
+            }
           </Dropdown>
 
           {/* Renderizar componente activo */}
@@ -136,7 +242,7 @@ export default function Home() {
                 </div>
 
                 <div>
-                  <h3 className="font-semibold text-[#DCD6F7] mb-3">Ejemplos:</h3>
+                  <h3 className="font-semibold text-[#DCD6F7] mb-3">Ejemplos:</h3>w
                   <div className="space-y-2 text-sm">
                     <div><code className="inline-flex items-center justify-center w-40 h-10 bg-gray-100 rounded ">x^2 + 2*x - 5</code></div>
                     <div><code className="inline-flex items-center justify-center w-40 h-10 bg-gray-100 rounded">sin(x) + cos(2*x)</code></div>
@@ -148,14 +254,14 @@ export default function Home() {
             </ModalBody>
             <ModalFooter>
               <div className="flex justify-center w-full">
-               <button
-                onClick={() => setMostrarInfo(false)}
-                className="px-4 py-2 bg-[#424874] text-white rounded-md hover:bg-[#373b67] transition-colors hover:cursor-pointer"
-              >
-                Cerrar
-              </button>
+                <button
+                  onClick={() => setMostrarInfo(false)}
+                  className="px-4 py-2 bg-[#424874] text-white rounded-md hover:bg-[#373b67] transition-colors hover:cursor-pointer"
+                >
+                  Cerrar
+                </button>
               </div>
-             
+
             </ModalFooter>
           </Modal>
         </div>
