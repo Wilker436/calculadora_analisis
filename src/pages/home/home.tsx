@@ -210,39 +210,50 @@ export default function Home() {
                 <div>
                   <h3 className="font-semibold text-[#DCD6F7] mb-3">Operadores Aritméticos:</h3>
                   <div className="grid grid-cols-2 gap-2 text-sm text-[#F4EEFF]">
-                    <div><code className="inline-flex items-center justify-center w-17 h-10 bg-gray-100 rounded text-black text-1xl">+</code> Suma</div>
-                    <div><code className="inline-flex items-center justify-center w-17 h-10 bg-gray-100 rounded text-black text-1xl">-</code> Resta</div>
-                    <div><code className="inline-flex items-center justify-center w-17 h-10 bg-gray-100 rounded text-black text-1xl">*</code> Multiplicación</div>
-                    <div><code className="inline-flex items-center justify-center w-17 h-10 bg-gray-100 rounded text-black text-1xl">/</code> División</div>
-                    <div><code className="inline-flex items-center justify-center w-17 h-10 bg-gray-100 rounded text-black text-1xl">^</code> Potencia</div>
-                    <div><code className="inline-flex items-center justify-center w-17 h-10 bg-gray-100 rounded text-black text-1xl">**</code> Potencia</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">+</code> Suma</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">-</code> Resta</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">*</code> Multiplicación</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">/</code> División</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">^</code> Potencia</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">**</code> Potencia</div>
                   </div>
                 </div>
 
                 <div>
                   <h3 className="font-semibold text-[#DCD6F7] mb-3">Funciones Matemáticas:</h3>
                   <div className="grid grid-cols-2 gap-2 text-sm text-[#F4EEFF]">
-                    <div><code className="inline-flex items-center justify-center w-17 h-10 bg-gray-100 rounded text-black text-1xl">sin(x)</code> Seno</div>
-                    <div><code className="inline-flex items-center justify-center w-17 h-10 bg-gray-100 rounded text-black text-1xl">cos(x)</code> Coseno</div>
-                    <div><code className="inline-flex items-center justify-center w-17 h-10 bg-gray-100 rounded text-black text-1xl">tan(x)</code> Tangente</div>
-                    <div><code className="inline-flex items-center justify-center w-17 h-10 bg-gray-100 rounded text-black text-1xl">log(x)</code> Log natural</div>
-                    <div><code className="inline-flex items-center justify-center w-17 h-10 bg-gray-100 rounded text-black text-1xl">log10(x)</code> Log base 10</div>
-                    <div><code className="inline-flex items-center justify-center w-17 h-10 bg-gray-100 rounded text-black text-1xl">exp(x)</code> Exponencial</div>
-                    <div><code className="inline-flex items-center justify-center w-17 h-10 bg-gray-100 rounded text-black text-1xl">sqrt(x)</code> Raíz cuadrada</div>
-                    <div><code className="inline-flex items-center justify-center w-17 h-10 bg-gray-100 rounded text-black text-1xl">abs(x)</code> Valor absoluto</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">sin(x)</code> Seno</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">cos(x)</code> Coseno</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">tan(x)</code> Tangente</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">asin(x)</code> Arcoseno</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">acos(x)</code> Arcocoseno</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">atan(x)</code> Arcotangente</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">sinh(x)</code> Seno hiperbólico</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">cosh(x)</code> Coseno hiperbólico</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">tanh(x)</code> Tangente hiperbólica</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">asinh(x)</code> Arcoseno hiperbólico</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">acosh(x)</code> Arcocoseno hiperbólico</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">atanh(x)</code> Arcotangente hiperbólica</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">log(x)</code> Log natural base(e)</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">log10(x)</code> Log base 10</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">exp(x)</code> Exponencial</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">sqrt(x)</code> Raíz cuadrada</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">abs(x)</code> Valor absoluto</div>
                   </div>
                 </div>
 
                 <div>
                   <h3 className="font-semibold text-[#DCD6F7] mb-3">Constantes:</h3>
                   <div className="grid grid-cols-2 gap-2 text-sm text-[#F4EEFF]">
-                    <div><code className="inline-flex items-center justify-center w-17 h-10 bg-gray-100 rounded text-black text-1xl">pi</code> π (3.14159...)</div>
-                    <div><code className="inline-flex items-center justify-center w-17 h-10 bg-gray-100 rounded text-black text-1xl">e</code> Euler (2.71828...)</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">pi</code> π (3.14159...)</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">e</code> Euler (2.71828...)</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">phi</code> Número áureo (1.61803...)</div>
+                    <div><code className="inline-flex items-center justify-center w-20 h-10 bg-gray-100 rounded text-black text-1xl">tau</code> Tau (2π ≈ 6.28318...)</div>
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="font-semibold text-[#DCD6F7] mb-3">Ejemplos:</h3>w
+                  <h3 className="font-semibold text-[#DCD6F7] mb-3">Ejemplos:</h3>
                   <div className="space-y-2 text-sm">
                     <div><code className="inline-flex items-center justify-center w-40 h-10 bg-gray-100 rounded ">x^2 + 2*x - 5</code></div>
                     <div><code className="inline-flex items-center justify-center w-40 h-10 bg-gray-100 rounded">sin(x) + cos(2*x)</code></div>

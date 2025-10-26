@@ -169,7 +169,7 @@ export default function MetodoFalsaPosicion() {
         </button>
       </div>
 
-      <Resultados resultado={resultado} iteraciones={iteraciones} />
+      <Resultados resultado={resultado} iteraciones={iteraciones} ecuacion={ecuacion} />
     </div>
   );
 }

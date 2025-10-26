@@ -1,7 +1,8 @@
 import { useState } from "react";
 
 import { InputNumerico } from "../../InputNumerico/InputNumerico";
-
+import Line from "../../Charts/LineChart";
+import FunctionChart from "../../Charts/CharFuntion";
 
 export default function InterpolacionLineal() {
 
@@ -133,7 +134,7 @@ export default function InterpolacionLineal() {
 
                 {y !== null && (
 
-                    <div className="p-4 bg-[#DCD6F7] border border-[#b8b2d6] rounded-lg">
+                    <div className="p-4 bg-[#DCD6F7] border border-[#424874] rounded-lg">
                         <h4 className="text-lg font-semibold text-[#424874] mb-2">Resultado</h4>
                         <div className="grid grid-cols-2 gap-4">
                             <div>
@@ -144,7 +145,12 @@ export default function InterpolacionLineal() {
                                 <strong>Y: </strong> {y !== null ? y.toFixed(6) : "N/A"}
                             </div>
 
+                        </div>
 
+                        <h4 className="text-lg font-semibold text-[#424874] mb-2 mt-7">Grafico</h4>
+                        <div className="bg-light w-full h-100 bg-[#F4EEFF] mt-4 p-2 rounded-md overflow-auto ">
+                            <Line xValues={[parseFloat(x1),parseFloat(x), parseFloat(x2)]} yValues={[parseFloat(y1), y,parseFloat(y2)]}></Line>
+                            
                         </div>
                     </div>
                 )}

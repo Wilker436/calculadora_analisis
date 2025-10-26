@@ -1,12 +1,15 @@
 // components/Result/Result.tsx
-import type { Resultado, IteracionBiseccion, IteracionNewton, IteracionSecante, IteracionPuntoFijo} from '../../types/numericalMethods';
+import type { Resultado, IteracionBiseccion, IteracionNewton, IteracionSecante, IteracionPuntoFijo } from '../../types/numericalMethods';
+import FunctionChart from '../Charts/CharFuntion';
+
 
 interface ResultadosProps {
   resultado: Resultado | null;
-  iteraciones: IteracionBiseccion[] | IteracionNewton[] | IteracionSecante[] | IteracionPuntoFijo[] ;
+  iteraciones: IteracionBiseccion[] | IteracionNewton[] | IteracionSecante[] | IteracionPuntoFijo[];
+  ecuacion?: string;
 }
 
-export const Resultados: React.FC<ResultadosProps> = ({ resultado, iteraciones }) => {
+export const Resultados: React.FC<ResultadosProps> = ({ resultado, iteraciones, ecuacion }) => {
   if (!resultado) return null;
 
   // Función para formatear valores según la columna
@@ -77,6 +80,14 @@ export const Resultados: React.FC<ResultadosProps> = ({ resultado, iteraciones }
           </div>
         </div>
       )}
+
+      {ecuacion && (
+        <div className="bg-light w-full h-100 bg-[#F4EEFF] mt-4 p-2 rounded-md overflow-auto ">
+          <FunctionChart funcion={ecuacion} xMin={-20} xMax={20} numPuntos={100} />
+        </div>
+      )}
+
+
     </div>
   );
 };

@@ -136,7 +136,7 @@ export default function MetodoPuntoFijo() {
         </button>
       </div>
 
-      <Resultados resultado={resultado} iteraciones={iteraciones} />
+      <Resultados resultado={resultado} iteraciones={iteraciones} ecuacion={ecuacion}/>
     </div>
   )
 }
