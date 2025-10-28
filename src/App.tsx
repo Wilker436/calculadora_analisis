@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { lazy, Suspense, useState, useEffect } from 'react';
 import type { ComponentType } from 'react';
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 const Home = lazy(() => import('./pages/home/home'));
 
@@ -50,6 +51,7 @@ function App() {
   return (
     <main>
       <Router>
+        <SpeedInsights />
         <Suspense fallback={<LoadingSpinner />}>
           <Routes>
             <Route path='/' element={<HomeWithLoading />} />
