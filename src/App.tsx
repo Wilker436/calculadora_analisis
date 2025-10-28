@@ -1,8 +1,8 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { lazy, Suspense, useState, useEffect } from 'react';
-import type { ComponentType } from 'react';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'
+import { lazy, Suspense, useState, useEffect } from 'react'
+import type { ComponentType } from 'react'
 
-const Home = lazy(() => import('./pages/home/home'));
+const Home = lazy(() => import('./pages/home/home'))
 
 const LoadingSpinner = () => (
   <div className="min-h-screen bg-[#424874] flex flex-col items-center justify-center">
@@ -20,31 +20,30 @@ const LoadingSpinner = () => (
       </div>
     </div>
   </div>
-);
+)
 
 // HOC para simular carga
 function withSimulatedLoading<T extends {}>(Component: ComponentType<T>, delay: number = 2000) {
   return function WithSimulatedLoading(props: T) {
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
       const timer = setTimeout(() => {
-        setIsLoading(false);
-      }, delay);
+        setIsLoading(false)
+      }, delay)
 
-      return () => clearTimeout(timer);
-    }, [delay]);
+      return () => clearTimeout(timer)
+    }, [delay])
 
     if (isLoading) {
-      return <LoadingSpinner />;
+      return <LoadingSpinner />
     }
 
-    return <Component {...props} />;
-  };
+    return <Component {...props} />
+  }
 }
 
-// Envuelve el componente Home con la carga simulada
-const HomeWithLoading = withSimulatedLoading(Home, 500);
+const HomeWithLoading = withSimulatedLoading(Home, 500)
 
 function App() {
   return (
@@ -52,7 +51,7 @@ function App() {
       <Router>
         <Suspense fallback={<LoadingSpinner />}>
           <Routes>
-            <Route path='/' element={<HomeWithLoading />} />
+            <Route path="/" element={<HomeWithLoading />} />
           </Routes>
         </Suspense>
       </Router>
