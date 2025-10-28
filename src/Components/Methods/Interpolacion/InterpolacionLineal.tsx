@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { InputNumerico } from "../../InputNumerico/InputNumerico";
 import Line from "../../Charts/LineChart";
-import FunctionChart from "../../Charts/CharFuntion";
+
 
 export default function InterpolacionLineal() {
 
@@ -101,7 +101,6 @@ export default function InterpolacionLineal() {
                     />
                 </div>
 
-                <h1 className="text-lg font-semibold text-[#424874] mb-4">Punto 2</h1>
 
                 <div className="flex w-full items-center justify-center gap-4">
                     <InputNumerico

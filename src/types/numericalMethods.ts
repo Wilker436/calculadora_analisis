@@ -106,3 +106,10 @@ export interface PasoGaussJordan {
   matriz: number[][];
   operacion?: string;
 }
+
+
+export interface TablaPuntosProps {
+  numPuntos: number;
+  onChange: (puntos: { x: number; y: number }[]) => void;
+  disabled?: boolean;
+}

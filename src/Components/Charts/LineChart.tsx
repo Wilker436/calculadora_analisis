@@ -1,6 +1,4 @@
 import { Line } from "react-chartjs-2";
-
-
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -24,46 +22,28 @@ ChartJS.register(
   Filler
 );
 
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top' as const,
-    },
-    title: {
-      display: true,
-      text: 'Chart.js Line Chart',
-    },
-  },
-};
-
-
 interface LineChartProps {
   xValues: number[];
   yValues: number[];
 }
 
-
-
 export default function LineChart({ xValues, yValues }: LineChartProps) {
-
-
-  const labels = xValues.map(x => x.toString());
+  // Combinar y ordenar los puntos por valor de X para un gráfico correcto
+  const points = xValues.map((x, i) => ({ x, y: yValues[i] }));
+  points.sort((a, b) => a.x - b.x);
 
   const data = {
-    labels,
     datasets: [{
       label: 'Función interpolada', 
-      data: yValues.map((y, index) => ({
-        x: xValues[index],
-        y: y
-      })),
+      data: points,
       borderColor: '#424874',
       backgroundColor: '#A6B1E1',
       pointBackgroundColor: '#A6B1E1',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: '#424874',
+      fill: false,
+      tension: 0.4 // Suaviza la línea un poco
     }]
   };
 
@@ -76,21 +56,25 @@ export default function LineChart({ xValues, yValues }: LineChartProps) {
       tooltip: {
         callbacks: {
           label: function (context: any) {
-            // context.dataIndex te da el índice del punto
-            const index = context.dataIndex;
-            return `X = ${xValues[index]}, Y = ${yValues[index]}`;
+            return `X = ${context.parsed.x}, Y = ${context.parsed.y}`;
           }
         }
       }
     },
     scales: {
       x: {
+        type: 'linear' as const, // ¡IMPORTANTE! Escala lineal para X
         title: {
           display: true,
           text: 'X'
+        },
+        ticks: {
+          // Para mostrar ticks más ordenados
+          stepSize: 1
         }
       },
       y: {
+        type: 'linear' as const,
         title: {
           display: true,
           text: 'Y'
@@ -99,11 +83,5 @@ export default function LineChart({ xValues, yValues }: LineChartProps) {
     }
   };
 
-
-  return (
-    <Line options={options} data={data} />
-
-  );
-
+  return <Line options={options} data={data} />;
 }
-
