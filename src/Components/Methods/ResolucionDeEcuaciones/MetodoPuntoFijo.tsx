@@ -13,7 +13,7 @@ export default function MetodoPuntoFijo() {
 
 
   // Estados específicos del método
-  const [a, setA] = useState<string>("1");
+  const [a] = useState<string>("1");
   const [tolerancia, setTolerancia] = useState<string>("0.0001");
   const [maxIteraciones, setMaxIteraciones] = useState<string>("100");
   const [resultado, setResultado] = useState<Resultado | null>(null);

@@ -9,7 +9,7 @@ import { derivadaNumerica } from '../../../utils/derivadas';
 export default function MetodoNewtonRaphson() {
   const { ecuacion, setEcuacion, evaluar, probarEcuacion, errorEcuacion } = useEcuacion();
 
-  const [x0, setX0] = useState<string>("1");
+  const [x0] = useState<string>("1");
   const [tolerancia, setTolerancia] = useState<string>("0.0001");
   const [maxIteraciones, setMaxIteraciones] = useState<string>("100");
   const [resultado, setResultado] = useState<ResultadoConDerivada | null>(null);
