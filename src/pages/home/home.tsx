@@ -17,7 +17,8 @@ const MetodoGaussSeidel = lazy(() => import("../../Components/Methods/Resolucion
 const MetodoJacobi = lazy(() => import("../../Components/Methods/ResolucionDeSistemasEcuaciones/MetodoJacobi"));
 const InterpolacionLineal = lazy(() => import("../../Components/Methods/Interpolacion/InterpolacionLineal"));
 const InterpolacionLagrange = lazy(() => import("../../Components/Methods/Interpolacion/InterpolacionLagrange"));
-
+const InterpolacionSpline = lazy(() => import("../../Components/Methods/Interpolacion/InterpolacionSplines"));
+const MetodoTrapecioCompuesto = lazy(() => import("../../Components/Methods/Integrales/TrapecioCompuesto"));
 
 import LoadingFallback from "../../Components/LoadingFallback/LoadingFallback";
 
@@ -78,15 +79,30 @@ const metodosConfig = [
   {
     id: "interpolacion-lineal",
     label: "Interpolación Lineal",
-    componente: InterpolacionLineal, // Necesitarías crear este componente
+    componente: InterpolacionLineal, 
     tipo: "interpolacion"
   },
   {
     id: "lagrange",
     label: "Interpolación por Lagrange",
-    componente: InterpolacionLagrange, // Necesitarías crear este componente
+    componente: InterpolacionLagrange, 
     tipo: "interpolacion"
   },
+  {
+    id: "spline",
+    label: "Interpolación por Splines",
+    componente: InterpolacionSpline, 
+    tipo: "interpolacion"
+  },
+    // Separador - Integrales
+  { id: "divider-Integrales", tipo: "divider", label: "Solucion de integrales" },
+  
+  {
+    id: "trapecio-compuesto",
+    label: "Método del Trapecio Compuesto",
+    componente: MetodoTrapecioCompuesto, 
+    tipo: "integrales"
+  }
 ];
 
 type MetodoConfig = typeof metodosConfig[0];
@@ -187,6 +203,27 @@ export default function Home() {
                 </DropdownItem>
               ))
             }
+
+             <DropdownDivider />
+
+            {/* Integrales */}
+
+            <DropdownItem className="cursor-default text-[15px] font-bold bg-[#364153]">
+              Integrales
+            </DropdownItem>
+
+              {metodosConfig
+              .filter(metodo => metodo.tipo === "integrales")
+              .map((metodo) => (
+                <DropdownItem
+                  key={metodo.id}
+                  onClick={() => setMetodoActivo(metodo)}
+                >
+                  {metodo.label}
+                </DropdownItem>
+              ))
+            }            
+
           </Dropdown>
 
           {/* Renderizar componente activo */}

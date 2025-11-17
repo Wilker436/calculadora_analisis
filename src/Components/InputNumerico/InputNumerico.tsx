@@ -6,6 +6,7 @@ interface InputNumericoProps {
   min?: number;
   max?: number;
   placeholder?: string;
+  param?: number;
 }
 
 export const InputNumerico: React.FC<InputNumericoProps> = ({
@@ -15,23 +16,40 @@ export const InputNumerico: React.FC<InputNumericoProps> = ({
   step = "any",
   min,
   max,
-  placeholder
+  placeholder,
+  param = 0,
 }) => {
   return (
     <div>
       <label className="block text-sm font-medium text-gray-700 mb-1">
         {label}
       </label>
-      <input 
-        type="number" 
-        value={value}
-        onChange={onChange}
-        className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#424874] focus:border-[#424874]"
-        step={step}
-        min={min}
-        max={max}
-        placeholder={placeholder}
-      />
+      {
+        param === 0 ? (
+          <input
+            type="number"
+            value={value}
+            onChange={onChange}
+            className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#424874] focus:border-[#424874]"
+            step={step}
+            min={min}
+            max={max}
+            placeholder={placeholder}
+          />
+        ) : (
+          <input
+            type="number"
+            value={value}
+            onChange={onChange}
+            className="w-20 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#424874] focus:border-[#424874]"
+            step={step}
+            min={min}
+            max={max}
+            placeholder={placeholder}
+          />
+        )
+      }
+
     </div>
   );
 };

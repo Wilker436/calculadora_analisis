@@ -6,6 +6,7 @@ interface InputEcuacionProps {
   label?: string;
   placeholder?: string;
   param?: number;
+  param2?: number;
 }
 
 export const InputEcuacion: React.FC<InputEcuacionProps> = ({
@@ -15,7 +16,9 @@ export const InputEcuacion: React.FC<InputEcuacionProps> = ({
   onProbarEcuacion,
   label = "Ecuación f(x):",
   placeholder = "x^2 - 4",
-  param = 1
+  param = 1,
+  param2 = 0,
+
 }) => {
   return (
     <div className="mb-4">
@@ -23,6 +26,12 @@ export const InputEcuacion: React.FC<InputEcuacionProps> = ({
         {label}
       </label>
       <div className="flex space-x-2">
+
+        {
+          param2 !== 0 && (
+            <span className="self-center text-gray-700 font-bold"> ( </span>
+          )
+        }
         <input
           type="text"
           value={ecuacion}
@@ -30,6 +39,16 @@ export const InputEcuacion: React.FC<InputEcuacionProps> = ({
           className="flex-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#424874] focus:border-[#424874]"
           placeholder={placeholder}
         />
+        {
+          param2 !== 0 && (
+            <>
+              <span className="self-center text-gray-700 font-bold"> ) </span>
+              <span className="self-center text-gray-700">dX</span>
+            </>
+
+          )
+        }
+
         <button
           onClick={onProbarEcuacion}
           className="px-4 py-2 bg-[#A6B1E1] text-[#424874] rounded-md hover:bg-[#8690BD] transition-colors"
@@ -43,16 +62,17 @@ export const InputEcuacion: React.FC<InputEcuacionProps> = ({
         <p className="mt-1 text-sm text-[#424874]">{errorEcuacion}</p>
       )}
 
+
       {
-        param === 1 ? (
+        param === 1 && param2 === 0 ? (
           <small className="text-gray-500">
             Usa 'x' como variable. Ejemplos: x^2 - 4, sin(x) - x, exp(x) - 2
           </small>
-        ) : (
+        ) : param2 === 0 ?(
           <small className="text-gray-500">
             Puedes usar x, y, z como variables. Ejemplos: (7.85 + 0.1*y + 0.2*z)/3, x + 2*y - z
           </small>
-        )
+        ): null
       }
 
 
