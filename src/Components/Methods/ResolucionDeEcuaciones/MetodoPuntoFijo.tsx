@@ -78,8 +78,17 @@ export default function MetodoPuntoFijo() {
       });
       setIteraciones(iteracionesArray);
 
-    } catch (error: any) {
-      alert("Error en el método de punto fijo: " + error.message);
+    } catch (error) {
+      let errorMessage = "Ocurrió un error desconocido";
+      
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      } else {
+        // Si lanzan un string u otra cosa que no sea Error
+        errorMessage = String(error);
+      }
+
+      alert("Error en el método de Newton-Raphson: " + errorMessage);
     }
   };
 

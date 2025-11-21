@@ -93,7 +93,7 @@ export default function MetodoBiseccion() {
       setIteraciones(iteracionesArray);
 
     } catch (error) {
-
+      console.error("Error durante la ejecución del método de bisección:", error);
     }
   };
 

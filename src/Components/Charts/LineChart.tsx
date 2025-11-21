@@ -11,6 +11,8 @@ import {
   Filler
 } from 'chart.js';
 
+import type { TooltipItem } from 'chart.js';
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -55,7 +57,7 @@ export default function LineChart({ xValues, yValues }: LineChartProps) {
       },
       tooltip: {
         callbacks: {
-          label: function (context: any) {
+          label: function (context: TooltipItem<'line'>) {
             return `X = ${context.parsed.x}, Y = ${context.parsed.y}`;
           }
         }

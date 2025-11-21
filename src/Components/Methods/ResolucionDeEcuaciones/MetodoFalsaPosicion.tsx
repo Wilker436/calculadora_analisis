@@ -97,7 +97,7 @@ export default function MetodoFalsaPosicion() {
       setIteraciones(iteracionesArray);
 
     } catch (error) {
-      
+      console.error("Error durante la ejecución del método de falsa posición:", error);
     }
   };
 

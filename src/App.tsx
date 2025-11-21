@@ -24,7 +24,7 @@ const LoadingSpinner = () => (
 );
 
 // HOC para simular carga
-function withSimulatedLoading<T extends {}>(Component: ComponentType<T>, delay: number = 2000) {
+function withSimulatedLoading<T extends object>(Component: ComponentType<T>, delay: number = 2000) {
   return function WithSimulatedLoading(props: T) {
     const [isLoading, setIsLoading] = useState(true);
 
@@ -34,10 +34,11 @@ function withSimulatedLoading<T extends {}>(Component: ComponentType<T>, delay: 
       }, delay);
 
       return () => clearTimeout(timer);
-    }, [delay]);
+
+    }, []); 
 
     if (isLoading) {
-      return <LoadingSpinner />;
+      return <LoadingSpinner />; 
     }
 
     return <Component {...props} />;

@@ -1,6 +1,7 @@
 import { Line } from "react-chartjs-2";
 import { useState, useEffect, useMemo } from 'react';
 import { useEcuacion } from '../../hooks/UseEcuacion';
+import type { TooltipItem } from 'chart.js';
 
 import {
   Chart as ChartJS,
@@ -25,9 +26,8 @@ ChartJS.register(
   Filler
 );
 
-
 interface FunctionChartProps {
-  funcion: string ;
+  funcion: string;
   xMin: number;
   xMax: number;
   numPuntos?: number;
@@ -36,7 +36,6 @@ interface FunctionChartProps {
 export default function FunctionChart({ funcion, xMin, xMax, numPuntos = 100 }: FunctionChartProps) {
   const { evaluar } = useEcuacion(funcion);
   const [puntos, setPuntos] = useState<{ x: number; y: number | null }[]>([]);
-
 
   useEffect(() => {
     const paso = (xMax - xMin) / (numPuntos - 1);
@@ -49,11 +48,17 @@ export default function FunctionChart({ funcion, xMin, xMax, numPuntos = 100 }: 
         nuevosPuntos.push({ x, y });
       } catch (error) {
         nuevosPuntos.push({ x, y: null });
+        console.log(error);
+        // Opcional: comentar el console.error para no ensuciar la consola si falla mucho mientras escribes
+        // console.error(`Error evaluando la función en x=${x}:`, error);
       }
     }
 
     setPuntos(nuevosPuntos);
-  }, [funcion, xMin, xMax, numPuntos]); 
+
+    // AGREGAMOS ESTA LÍNEA PARA EVITAR EL BUCLE INFINITO:
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [funcion, xMin, xMax, numPuntos]);
 
   const data = useMemo(() => ({
     datasets: [{
@@ -74,8 +79,11 @@ export default function FunctionChart({ funcion, xMin, xMax, numPuntos = 100 }: 
       },
       tooltip: {
         callbacks: {
-          label: function(context: any) {
-            return `f(${context.parsed.x.toFixed(2)}) = ${context.parsed.y?.toFixed(4) || 'undefined'}`;
+          label: function (context: TooltipItem<'line'>) {
+            const xVal = context.parsed.x?.toFixed(2) ?? '';
+            const yVal = context.parsed.y?.toFixed(4) ?? 'Indefinido';
+
+            return `f(${xVal}) = ${yVal}`;
           }
         }
       }

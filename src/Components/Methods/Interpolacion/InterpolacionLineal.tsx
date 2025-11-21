@@ -44,9 +44,9 @@ export default function InterpolacionLineal() {
             return;
         }
 
-        let m = (y2Num - y1Num) / (x2Num - x1Num);
+        const m = (y2Num - y1Num) / (x2Num - x1Num);
 
-        let y = m * (xNum - x2Num) + y2Num;
+        const y = m * (xNum - x2Num) + y2Num;
 
         return setY(y);
 

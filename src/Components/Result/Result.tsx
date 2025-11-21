@@ -13,14 +13,21 @@ export const Resultados: React.FC<ResultadosProps> = ({ resultado, iteraciones, 
   if (!resultado) return null;
 
   // Función para formatear valores según la columna
-  const formatearValor = (key: string, value: any): string => {
+  const formatearValor = (key: string, value: unknown): string => {
     if (key === 'iteracion') {
-      return value.toString(); // Entero sin decimales
+      return String(value);
     }
+
+
     if (typeof value === 'number') {
-      return value.toFixed(6); // Números con 6 decimales
+      return value.toFixed(6); 
     }
-    return value.toString(); // Strings u otros
+
+    if (value !== null && value !== undefined) {
+      return value.toString();
+    }
+
+    return '';
   };
 
   return (
