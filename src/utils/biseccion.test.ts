@@ -10,7 +10,7 @@ const f_simple = (x: number) => x - 2;
 const f_cuadratica = (x: number) => x * x - 4;
 
 // 3. Función exponencial: f(x) = exp(x) - 5. Raíz en ln(5) ≈ 1.609
-const f_exp = (x: number) => Math.exp(x) - 5;
+/* const f_exp = (x: number) => Math.exp(x) - 5; */
 
 
 describe('Método de Bisección', () => {
